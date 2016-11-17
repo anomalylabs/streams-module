@@ -70,7 +70,7 @@ class AssignmentsController extends AdminController
     public function choose(FieldRepositoryInterface $fields, StreamRepositoryInterface $streams, $stream)
     {
         $fields = $fields
-            ->findAllByNamespace('streams')
+            ->findAllByNamespace($this->namespace)
             ->notAssignedTo($streams->find($stream))
             ->unlocked();
 
