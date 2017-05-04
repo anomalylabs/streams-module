@@ -61,13 +61,6 @@ class StreamsModule extends Module
                 'new_entry'        => [
                     'href' => 'admin/streams/entries/{request.route.parameters.stream}/create',
                 ],
-                'change_namespace' => [
-                    'type'        => 'info',
-                    'data-toggle' => 'modal',
-                    'data-target' => '#modal',
-                    'icon'        => 'fa fa-random',
-                    'href'        => 'admin/streams/namespaces/change?entries=true',
-                ],
             ],
         ],
         'fields'     => [
