@@ -1,11 +1,12 @@
-<?php namespace Anomaly\StreamsModule;
+<?php
+
+namespace Anomaly\StreamsModule;
 
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Anomaly\Streams\Platform\Assignment\AssignmentRouter;
 use Anomaly\Streams\Platform\Field\FieldRouter;
 use Anomaly\Streams\Platform\Model\StreamsUtilities\StreamsUtilitiesConfigurationsEntryModel;
 use Anomaly\Streams\Platform\Model\StreamsUtilities\StreamsUtilitiesGroupsEntryModel;
-use Anomaly\Streams\Platform\Stream\Contract\StreamInterface;
 use Anomaly\Streams\Platform\Stream\StreamModel;
 use Anomaly\Streams\Platform\Ui\ControlPanel\Component\Navigation\Event\GatherNavigation;
 use Anomaly\StreamsModule\Configuration\Command\RouteConfigurations;
@@ -13,7 +14,6 @@ use Anomaly\StreamsModule\Configuration\ConfigurationModel;
 use Anomaly\StreamsModule\Configuration\ConfigurationRepository;
 use Anomaly\StreamsModule\Configuration\Contract\ConfigurationRepositoryInterface;
 use Anomaly\StreamsModule\Group\Command\AddVirtualizedNavigation;
-use Anomaly\StreamsModule\Group\Contract\GroupInterface;
 use Anomaly\StreamsModule\Group\Contract\GroupRepositoryInterface;
 use Anomaly\StreamsModule\Group\GroupModel;
 use Anomaly\StreamsModule\Group\GroupRepository;
@@ -27,7 +27,6 @@ use Illuminate\Routing\Router;
  * Class StreamsModuleServiceProvider
  *
  * @link   http://pyrocms.com/
- * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
 class StreamsModuleServiceProvider extends AddonServiceProvider
@@ -38,9 +37,9 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
      *
      * @var array
      */
-    protected $listeners = [
+    public $listeners = [
         GatherNavigation::class => [
-            AddVirtualizedNavigation::class,
+            //AddVirtualizedNavigation::class,
         ],
     ];
 
@@ -49,7 +48,7 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
      *
      * @var array
      */
-    protected $routes = [
+    public $routes = [
         'admin/streams'                            => 'Anomaly\StreamsModule\Http\Controller\Admin\StreamsController@index',
         'admin/streams/create'                     => 'Anomaly\StreamsModule\Http\Controller\Admin\StreamsController@create',
         'admin/streams/edit/{id}'                  => 'Anomaly\StreamsModule\Http\Controller\Admin\StreamsController@edit',
@@ -69,7 +68,7 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
      *
      * @var array
      */
-    protected $bindings = [
+    public $bindings = [
         StreamsUtilitiesGroupsEntryModel::class         => GroupModel::class,
         StreamsUtilitiesConfigurationsEntryModel::class => ConfigurationModel::class,
     ];
@@ -79,7 +78,7 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
      *
      * @var array
      */
-    protected $singletons = [
+    public $singletons = [
         GroupRepositoryInterface::class         => GroupRepository::class,
         ConfigurationRepositoryInterface::class => ConfigurationRepository::class,
     ];
@@ -222,12 +221,9 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
                 $permissions[$namespace]['permissions'][$stream->getSlug()] = [
                     'label'     => $stream->getName(),
                     'available' => [
-                        'anomaly.module.' . $group->getSlug() . '::' . $stream->getSlug(
-                        ) . '.read'                                                                   => 'anomaly.module.streams::permission.entries.option.read',
-                        'anomaly.module.' . $group->getSlug() . '::' . $stream->getSlug(
-                        ) . '.write'                                                                  => 'anomaly.module.streams::permission.entries.option.write',
-                        'anomaly.module.' . $group->getSlug() . '::' . $stream->getSlug(
-                        ) . '.delete'                                                                 => 'anomaly.module.streams::permission.entries.option.delete',
+                        'anomaly.module.' . $group->getSlug() . '::' . $stream->getSlug() . '.read'                                                                   => 'anomaly.module.streams::permission.entries.option.read',
+                        'anomaly.module.' . $group->getSlug() . '::' . $stream->getSlug() . '.write'                                                                  => 'anomaly.module.streams::permission.entries.option.write',
+                        'anomaly.module.' . $group->getSlug() . '::' . $stream->getSlug() . '.delete'                                                                 => 'anomaly.module.streams::permission.entries.option.delete',
                     ],
                 ];
             }
