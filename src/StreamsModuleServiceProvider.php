@@ -158,19 +158,19 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
 
                 $index = array_merge(
                     ['uses' => 'Anomaly\StreamsModule\Http\Controller\Admin\VirtualController@index'],
-                    $config->get("anomaly.module.streams::{$namespace}.{$slug}.routes.index", []),
+                    config("anomaly.module.streams::{$namespace}.{$slug}.routes.index", []),
                     $defaults
                 );
 
                 $create = array_merge(
                     ['uses' => 'Anomaly\StreamsModule\Http\Controller\Admin\VirtualController@create'],
-                    $config->get("anomaly.module.streams::{$namespace}.{$slug}.routes.create", []),
+                    config("anomaly.module.streams::{$namespace}.{$slug}.routes.create", []),
                     $defaults
                 );
 
                 $edit = array_merge(
                     ['uses' => 'Anomaly\StreamsModule\Http\Controller\Admin\VirtualController@edit'],
-                    $config->get("anomaly.module.streams::{$namespace}.{$slug}.routes.edit", []),
+                    config("anomaly.module.streams::{$namespace}.{$slug}.routes.edit", []),
                     $defaults
                 );
 
@@ -183,14 +183,13 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
 
     /**
      * Boot the addon.
-     *
-     * @param GroupRepositoryInterface $groups
-     * @param Repository $config
      */
-    public function boot(GroupRepositoryInterface $groups, Repository $config)
+    public function boot()
     {
 
-        $permissions = $config->get('anomaly.module.users::config.permissions');
+        $groups = app(GroupRepositoryInterface::class);
+
+        $permissions = config('anomaly.module.users::config.permissions');
 
         /* @var GroupInterface $group */
         foreach ($groups->all() as $group) {
@@ -214,14 +213,14 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
                     }
                 );
 
-                $config->set(
-                    $namespace . '::permissions.' . $stream->getSlug(),
+                config([
+                    $namespace . '::permissions.' . $stream->getSlug() =>
                     [
                         'read',
                         'write',
                         'delete',
                     ]
-                );
+                ]);
 
                 $permissions[$namespace]['permissions'][$stream->getSlug()] = [
                     'label'     => $stream->getName(),
@@ -234,6 +233,6 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
             }
         }
 
-        $config->set('anomaly.module.users::config.permissions', $permissions);
+        config(['anomaly.module.users::config.permissions' => $permissions]);
     }
 }
