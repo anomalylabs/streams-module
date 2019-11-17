@@ -9,8 +9,7 @@
     ],
     "homepage": "http://pyrocms.com/addons/anomaly/streams-module",
     "license": "https://pyrocms.com/pro/license",
-    "authors": [
-        {
+    "authors": [{
             "name": "PyroCMS, Inc.",
             "homepage": "http://pyrocms.com/",
             "role": "Owner"
@@ -39,6 +38,11 @@
     "extra": {
         "branch-alias": {
             "2.0.0": "2.0.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Anomaly\\StreamsModule\\StreamsModuleServiceProvider"
+            ]
         }
     }
 }
