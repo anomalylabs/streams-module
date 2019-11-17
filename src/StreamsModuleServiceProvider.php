@@ -131,6 +131,7 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
         AssignmentRouter $assignments,
         GroupRepositoryInterface $groups
     ) {
+        return;
         $fields->route($this->addon, FieldsController::class);
         $assignments->route($this->addon, AssignmentsController::class);
 
@@ -186,7 +187,7 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
      */
     public function boot()
     {
-
+        return;
         $groups = app(GroupRepositoryInterface::class);
 
         $permissions = config('anomaly.module.users::config.permissions');
