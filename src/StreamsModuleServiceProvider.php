@@ -88,8 +88,13 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
      *
      * @param StreamModel $model
      */
-    public function register(StreamModel $model)
+    public function register()
     {
+        parent::register();
+
+        /* @var StreamModel $model */
+        $model = app(StreamModel::class);
+
         StreamModel::observe(StreamObserver::class);
 
         $model->bind(
