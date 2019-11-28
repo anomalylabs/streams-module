@@ -3,13 +3,13 @@
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
 /**
- * Class AnomalyModuleStreamsCreateStreamsFields
+ * Class CreateStreamsFields
  *
  * @link   http://pyrocms.com/
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class AnomalyModuleStreamsCreateStreamsFields extends Migration
+class CreateStreamsFields extends Migration
 {
 
     /**
@@ -34,5 +34,4 @@ class AnomalyModuleStreamsCreateStreamsFields extends Migration
             ],
         ],
     ];
-
 }

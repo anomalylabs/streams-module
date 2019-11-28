@@ -3,21 +3,14 @@
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
 /**
- * Class AnomalyModuleStreamsCreateGroupsStream
+ * Class CreateNamespacesStream
  *
  * @link   http://pyrocms.com/
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class AnomalyModuleStreamsCreateGroupsStream extends Migration
+class CreateNamespacesStream extends Migration
 {
-
-    /**
-     * The field namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'streams_utilities';
 
     /**
      * The stream definition.
@@ -25,7 +18,7 @@ class AnomalyModuleStreamsCreateGroupsStream extends Migration
      * @var array
      */
     protected $stream = [
-        'slug'         => 'groups',
+        'slug'         => 'namespaces',
         'sortable'     => true,
         'translatable' => true,
     ];
@@ -48,5 +41,4 @@ class AnomalyModuleStreamsCreateGroupsStream extends Migration
             'translatable' => true,
         ],
     ];
-
 }

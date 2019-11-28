@@ -3,13 +3,13 @@
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
 /**
- * Class AnomalyModuleStreamsRemoveAllowedRolesField
+ * Class RemoveAllowedRolesField
  *
  * @link   http://pyrocms.com/
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class AnomalyModuleStreamsRemoveAllowedRolesField extends Migration
+class RemoveAllowedRolesField extends Migration
 {
 
     /**
@@ -19,7 +19,7 @@ class AnomalyModuleStreamsRemoveAllowedRolesField extends Migration
      */
     public function up()
     {
-        if (!$field = $this->fields()->findBySlugAndNamespace('allowed_roles', 'streams_utilities')) {
+        if (!$field = $this->fields()->findBySlugAndNamespace('allowed_roles', 'streams')) {
             return;
         }
 
@@ -35,5 +35,4 @@ class AnomalyModuleStreamsRemoveAllowedRolesField extends Migration
     {
         //
     }
-
 }

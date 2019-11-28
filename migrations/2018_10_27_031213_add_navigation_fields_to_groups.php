@@ -3,13 +3,13 @@
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
 /**
- * Class AnomalyModuleStreamsAddNavigationFieldsToGroups
+ * Class AddNavigationFieldsToGroups
  *
  * @link   http://pyrocms.com/
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class AnomalyModuleStreamsAddNavigationFieldsToGroups extends Migration
+class AddNavigationFieldsToGroups extends Migration
 {
 
     /**
@@ -19,13 +19,6 @@ class AnomalyModuleStreamsAddNavigationFieldsToGroups extends Migration
      * @var bool
      */
     protected $delete = false;
-
-    /**
-     * The field namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'streams_utilities';
 
     /**
      * The addon fields.
@@ -55,5 +48,4 @@ class AnomalyModuleStreamsAddNavigationFieldsToGroups extends Migration
         'virtualize',
         'icon',
     ];
-
 }

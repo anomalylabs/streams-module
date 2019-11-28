@@ -3,21 +3,14 @@
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
 /**
- * Class AnomalyModuleStreamsCreateConfigurationsStream
+ * Class CreateConfigurationsStream
  *
  * @link   http://pyrocms.com/
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class AnomalyModuleStreamsCreateConfigurationsStream extends Migration
+class CreateConfigurationsStream extends Migration
 {
-
-    /**
-     * The field namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'streams_utilities';
 
     /**
      * The stream definition.
@@ -51,5 +44,4 @@ class AnomalyModuleStreamsCreateConfigurationsStream extends Migration
             'required' => true,
         ],
     ];
-
 }
