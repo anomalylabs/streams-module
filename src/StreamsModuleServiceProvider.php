@@ -131,7 +131,7 @@ class StreamsModuleServiceProvider extends AddonServiceProvider
         $assignments->route($this->addon, AssignmentsController::class);
 
         if (class_exists('Anomaly\Streams\Platform\Model\StreamsUtilities\StreamsUtilitiesConfigurationsEntryModel')) {
-            dispatch_sync(new RouteConfigurations());
+            dispatch_now(new RouteConfigurations());
         }
 
         /* @var GroupInterface $group */
