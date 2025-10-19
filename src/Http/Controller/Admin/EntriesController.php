@@ -53,7 +53,7 @@ class EntriesController extends AdminController
         /* @var StreamInterface $stream */
         $stream = $streams->find($this->route->parameter('stream'));
 
-        $builder = $this->dispatch(new GetEntryTableBuilder($stream));
+        $builder = dispatch_sync(new GetEntryTableBuilder($stream));
 
         return $builder->render();
     }
@@ -95,7 +95,7 @@ class EntriesController extends AdminController
         /* @var StreamInterface $stream */
         $stream = $streams->find($this->route->parameter('stream'));
 
-        $builder = $this->dispatch(new GetEntryFormBuilder($stream));
+        $builder = dispatch_sync(new GetEntryFormBuilder($stream));
 
         return $builder->render();
     }
@@ -111,7 +111,7 @@ class EntriesController extends AdminController
         /* @var StreamInterface $stream */
         $stream = $streams->find($this->route->parameter('stream'));
 
-        $builder = $this->dispatch(new GetEntryFormBuilder($stream));
+        $builder = dispatch_sync(new GetEntryFormBuilder($stream));
 
         return $builder->render($this->route->parameter('id'));
     }

@@ -51,7 +51,7 @@ class GetConfiguredTableBuilder
             return null;
         }
 
-        $builder = $this->dispatch(new GetDefaultTableBuilder($this->stream));
+        $builder = dispatch_sync(new GetDefaultTableBuilder($this->stream));
 
         $hydrator->hydrate($builder, $parameters);
 

@@ -55,8 +55,8 @@ class GetEntryFormBuilder
                 ->make("anomaly.module.streams::{$namespace}.{$stream}.form")
                 ->setModel($this->stream->getEntryModel());
         } catch (\Exception $e) {
-            if (!$builder = $this->dispatch(new GetConfiguredFormBuilder($this->stream))) {
-                $builder = $this->dispatch(new GetDefaultFormBuilder($this->stream));
+            if (!$builder = dispatch_sync(new GetConfiguredFormBuilder($this->stream))) {
+                $builder = dispatch_sync(new GetDefaultFormBuilder($this->stream));
             }
         }
 

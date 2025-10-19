@@ -55,8 +55,8 @@ class GetEntryTableBuilder
                 ->make("anomaly.module.streams::{$namespace}.{$stream}.table")
                 ->setModel($this->stream->getEntryModel());
         } catch (\Exception $e) {
-            if (!$builder = $this->dispatch(new GetConfiguredTableBuilder($this->stream))) {
-                $builder = $this->dispatch(new GetDefaultTableBuilder($this->stream));
+            if (!$builder = dispatch_sync(new GetConfiguredTableBuilder($this->stream))) {
+                $builder = dispatch_sync(new GetDefaultTableBuilder($this->stream));
             }
         }
 

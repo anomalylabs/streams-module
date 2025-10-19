@@ -51,7 +51,7 @@ class GetConfiguredFormBuilder
             return null;
         }
 
-        $builder = $this->dispatch(new GetDefaultFormBuilder($this->stream));
+        $builder = dispatch_sync(new GetDefaultFormBuilder($this->stream));
 
         $hydrator->hydrate($builder, $parameters);
 

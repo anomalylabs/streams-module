@@ -57,9 +57,9 @@ class VirtualController extends AdminController
             abort(404);
         }
 
-        $builder = $this->dispatch(new GetEntryTableBuilder($stream));
+        $builder = dispatch_sync(new GetEntryTableBuilder($stream));
 
-        $this->dispatch(new AddDefaultTablePermissions($builder, $group, $stream));
+        dispatch_sync(new AddDefaultTablePermissions($builder, $group, $stream));
 
         return $builder->render();
     }
@@ -84,9 +84,9 @@ class VirtualController extends AdminController
             abort(404);
         }
 
-        $builder = $this->dispatch(new GetEntryFormBuilder($stream));
+        $builder = dispatch_sync(new GetEntryFormBuilder($stream));
 
-        $this->dispatch(new AddDefaultFormPermissions($builder, $group, $stream));
+        dispatch_sync(new AddDefaultFormPermissions($builder, $group, $stream));
 
         return $builder->render();
     }
@@ -112,7 +112,7 @@ class VirtualController extends AdminController
             abort(404);
         }
 
-        $builder = $this->dispatch(new GetEntryFormBuilder($stream));
+        $builder = dispatch_sync(new GetEntryFormBuilder($stream));
 
         $builder->setOption(
             'permission',
