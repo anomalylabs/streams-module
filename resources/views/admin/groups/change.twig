@@ -13,7 +13,7 @@
         <ul class="nav nav-pills nav-stacked">
             {% for group in groups %}
                 <li class="nav-item">
-                    <a href="{{ request_get('entries') ? url('admin/streams/entries/choose?namespace=' ~ group.slug) : strtok(url_previous()) ~ '?namespace=' ~ group.slug }}"
+                    <a href="{{ request_get('entries') ? url('admin/streams/entries/choose?namespace=' ~ group.slug) : strtok(url_previous(), '?') ~ '?namespace=' ~ group.slug }}"
                        class="nav-link {{ request_get('entries') ? 'ajax' }}">
                         <strong>{{ group.name }}</strong>
                         <br>
